@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Intrest-Calc",
+   "version": "1.0.0",
+   "slug": "Intrest-calculator",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.intrestcal.intrestcal"
+    },
+    "android": {
+      "package": "com.intrestcal.intrestcal"
+    }
+  }
+}
