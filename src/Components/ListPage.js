@@ -87,7 +87,6 @@ onDatePickedFunction = (date) => {
       }
   }
   createInstallment=(int)=>{
-      debugger
      let prinicapmonthly=parseInt(this.state.amount)/3;
      let penalty=50000;
      let firstmonthint=Math.round(parseInt(this.state.amount)*(0.12/100)*30);
