@@ -53,11 +53,11 @@ onDatePickedFunction = (date) => {
       
      if(this.state.loanDate&&this.state.loanDate<=this.state.today&&this.state.amount){
       let duration=Math.abs(this.state.today.diff(this.state.loanDate, 'days'))+1
-       this.setState({duration},()=>{
+       this.setState({duration,installments:null},()=>{
           let Intrest= this.getIntrest();
           if(Intrest>0){
           this.setState({Intrest:parseInt(Intrest),show:true},()=>{
-            Expo.Notifications.scheduleLocalNotificationAsync({title:'Your Intrest for today is',body:`${this.state.Intrest}`},{time:((new Date()).getTime() + 10000),repeat:'day'});
+            Expo.Notifications.scheduleLocalNotificationAsync({title:'Your Intrest till today is',body:`${this.state.Intrest} on your amount ${this.state.amount}`},{time:((new Date()).getTime() + 10000),repeat:'day'});
           });
            }else{
             this.setState({Intrest:'no intrest till 7 days',show:true});
@@ -112,7 +112,7 @@ onDatePickedFunction = (date) => {
                <View style={{flex:1}}>
                <Text style={{color:'#000',fontSize:24,marginTop:8}}>Enter Details Here</Text>
                <View style={{flexDirection:'row',marginTop:8,justifyContent:'flex-start',alignItems:'center'}}>
-                   <TextInput placeholder="Enter amount in IDR" placeholderTextColor="black" underlineColorAndroid={'transparent'} style={styles.textInput} onChangeText={(text)=>this.setState({amount:text})}>
+                   <TextInput placeholder="Enter amount " keyboardType={'numeric'} placeholderTextColor="black" underlineColorAndroid={'transparent'} style={styles.textInput} value={this.state.amount} onChangeText={(text)=>this.setState({amount:text})}>
                    </TextInput>
                     
                                 <TouchableOpacity onPress={this.DatePickerMainFunctionCall.bind(this)} >
